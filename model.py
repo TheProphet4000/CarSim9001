@@ -10,15 +10,26 @@ class Wheel(object):
     def rotate(self,revolutions):
         self.orientation = (self.orientation+(revolutions*360))%360
 
-
 class Engine(object):
     pass
 
 class Gearbox(object):
-    pass
+    def __init__(self):
+        self.wheels = {'frontLeft':Wheel(), 'frontRight':Wheel(), 'rearLeft':Wheel(),'rearRight':Wheel()}
+        self.gears = [0,   0.8,   1,   1.4,   2.2,   3.8]
+        self.clutchEngaged True
+
+    def shiftUp(self):
+        if self.currentGear < len(self.gears)-1:
+            self.currentGear = self.currentGear + 1
+
+    def shiftDown(self):
+        if condition:
+            self.currentGear = self.currentGear - 1
+
 
 class Tank(object):
-    def _init_(self):
+    def __init__(self):
         self.capacity = 100
         self.contents = 100
 
