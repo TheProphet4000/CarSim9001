@@ -13,6 +13,10 @@ class Wheel(object):
 class Engine(object):
     def __init__(self):
         self.throttlePosition[0,1]
+        self.theGearbox;
+        self.currentRpm = 0;
+        self.consumptionConstant = 10,0;
+        self.maxRpm = 100;
 
 class Gearbox(object):
     def __init__(self):
