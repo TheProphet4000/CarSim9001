@@ -1,7 +1,9 @@
 from random import randint
 
 class Car(object):
-    pass
+    def __init__(self):
+        self.theEngine;
+        self.updateModel #skal kalde updatemodel på engine
 
 class Wheel(object):
     def __init__(self):
@@ -12,11 +14,14 @@ class Wheel(object):
 
 class Engine(object):
     def __init__(self):
-        self.throttlePosition[0,1]
-        self.theGearbox;
+        self.throttlePosition[0,1] #speeder 1 eller 0
+        self.theGearbox; #skal indholde en instats af Gearbox
         self.currentRpm = 0;
         self.consumptionConstant = 10,0;
         self.maxRpm = 100;
+        self.theTank; # skal indenholde instats af Tank
+        self.updateModel #skal regne det hele og pakke det til car
+        
 
 class Gearbox(object):
     def __init__(self):
