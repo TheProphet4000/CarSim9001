@@ -2,8 +2,10 @@ from random import randint
 
 class Car(object):
     def __init__(self):
-        self.theEngine; #skal kalde Engine
-        self.updateModel #skal kalde updatemodel på engine
+        self.theEngine = Engine() #skal kalde Engine
+
+    def updateModel(self,dt):
+        self.theEngine.updateModel(dt)
 
 class Wheel(object):
     def __init__(self):
@@ -14,13 +16,20 @@ class Wheel(object):
 
 class Engine(object):
     def __init__(self):
-        self.throttlePosition[0,1] #speeder 1 eller 0
-        self.theGearbox = Gearbox(); #skal indholde en instats af Gearbox
-        self.currentRpm = 0;
-        self.consumptionConstant = 10,0;
-        self.maxRpm = 100;
-        self.theTank = Tank(); # skal indenholde instats af Tank
-        self.updateModel #skal regne det hele og pakke det til car (DT er deltaTime)
+        self.throttlePosition = 0 #speeder 1 eller 0
+        self.theGearbox = Gearbox()#skal indholde en instats af Gearbox
+        self.currentRpm = 0
+        self.consumptionConstant = 0.0025
+        self.maxRpm = 100
+        self.theTank = Tank() # skal indenholde instats af Tank
+
+    def updateModel(self , dt):
+        if self.theTank.contents > 0:
+            self.currentRpm = self.throttlePosition * self.maxRpm
+            self.theTank.remove(self.currentRpm * self.consumptionConstant)
+            self.theGearbox.rotate(self.currentRpm * (dt / 60))
+        else:
+            self.currentRpm = 0
 
         #Skal gange throttlePosition*maxRpm =currentRpm
         #skal bruge benzin  remove (på tank)   currentRpm*consumptionConstant
